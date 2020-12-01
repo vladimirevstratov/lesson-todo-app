@@ -12,3 +12,6 @@ https://github.com/vladimirevstratov/lesson-todo-app/tree/feature/1-lesson
 
 2 урок:
 https://github.com/vladimirevstratov/lesson-todo-app/tree/feature/2-lesson
+
+3 урок:
+https://github.com/vladimirevstratov/lesson-todo-app/tree/feature/3-lesson

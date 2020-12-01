@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 5,
-  }
+  },
 });
 
 export default styles;
