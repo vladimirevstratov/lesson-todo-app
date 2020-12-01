@@ -3,15 +3,20 @@ import {View, Text} from 'react-native';
 import styles from './styles';
 import CheckBox from '@react-native-community/checkbox';
 
-const TodoItem = ({name, category}) => {
-  const [toggleCheckBox, setToggleCheckBox] = useState(false);
+const TodoItem = ({id, name, category, setTaskCompleted, isCompleted}) => {
+  const [toggleCheckBox, setToggleCheckBox] = useState(isCompleted);
+
+  const onChange = (newValue) => {
+    setToggleCheckBox(newValue);
+    setTaskCompleted({isChecked: newValue, id});
+  };
 
   return (
     <View style={styles.container}>
       <CheckBox
         disabled={false}
         value={toggleCheckBox}
-        onValueChange={(newValue) => setToggleCheckBox(newValue)}
+        onValueChange={onChange}
       />
       <View style={styles.textContainer}>
         <Text style={styles.nameText}>{name}</Text>
