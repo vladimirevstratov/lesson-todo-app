@@ -17,6 +17,9 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginBottom: 5,
   },
+  completedNameText: {
+    color: '#B9B9BE',
+  },
   categoryText: {
     color: '#58595B',
   },

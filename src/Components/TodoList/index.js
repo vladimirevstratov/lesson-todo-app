@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text, FlatList} from 'react-native';
 import TodoItem from '../TodoItem';
 
-const TodoList = ({todoData, onChangeTodo, todoCategories}) => {
+const TodoList = ({todoData, onChangeTodo, todoCategories, onDeleteTodo}) => {
   const renderItem = ({item}) => (
     <TodoItem
       id={item.id}
@@ -11,6 +11,7 @@ const TodoList = ({todoData, onChangeTodo, todoCategories}) => {
       onChangeTodo={onChangeTodo}
       isCompleted={item.isCompleted}
       todoCategories={todoCategories}
+      onDeleteTodo={onDeleteTodo}
     />
   );
 

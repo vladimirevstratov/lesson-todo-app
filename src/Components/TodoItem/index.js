@@ -11,6 +11,7 @@ const TodoItem = ({
   onChangeTodo,
   isCompleted,
   todoCategories,
+  onDeleteTodo,
 }) => {
   const [toggleCheckBox, setToggleCheckBox] = useState(isCompleted);
   const [isEditable, setIsEditable] = useState(false);
@@ -43,9 +44,15 @@ const TodoItem = ({
               style={styles.nameText}
             />
           ) : (
-            <Text style={styles.nameText}>{name}</Text>
+            <Text
+              style={[
+                styles.nameText,
+                isCompleted ? styles.completedNameText : null,
+              ]}>
+              {name}
+            </Text>
           )}
-          {isEditable ? (
+          {isCompleted ? null : isEditable ? (
             <Picker
               selectedValue={category}
               onValueChange={(value) => onChange(todoProps.category, value)}>
@@ -59,6 +66,9 @@ const TodoItem = ({
       <View>
         <TouchableOpacity onPress={() => setIsEditable(!isEditable)}>
           <Text>Ред.</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => onDeleteTodo({id})}>
+          <Text>Удал.</Text>
         </TouchableOpacity>
       </View>
     </View>

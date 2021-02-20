@@ -28,6 +28,12 @@ const Main = () => {
     ]);
   };
 
+  const deleteTask = ({id}) => {
+    const newTodoData = todoData.filter((item) => item.id !== id);
+
+    setTodoData(newTodoData);
+  };
+
   const filterTodoData = ({data, status}) =>
     data.filter((item) => item.isCompleted === status);
 
@@ -53,12 +59,14 @@ const Main = () => {
         title={'Новые'}
         onChangeTodo={onChangeTask}
         todoCategories={categoriesData}
+        onDeleteTodo={deleteTask}
       />
       <TodoBlock
         todoData={filterTodoData({data: todoData, status: true})}
         title={'Выполненные '}
         onChangeTodo={onChangeTask}
         todoCategories={categoriesData}
+        onDeleteTodo={deleteTask}
       />
       <CircleButton add={addNewTask} />
     </View>
