@@ -3,6 +3,7 @@ import {View, Text, TextInput, TouchableOpacity, Picker} from 'react-native';
 import styles from './styles';
 import CheckBox from '@react-native-community/checkbox';
 import {todoProps} from '../../Constants/todo';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const TodoItem = ({
   id,
@@ -63,14 +64,22 @@ const TodoItem = ({
           )}
         </View>
       </View>
-      <View>
-        <TouchableOpacity onPress={() => setIsEditable(!isEditable)}>
-          <Text>Ред.</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => onDeleteTodo({id})}>
-          <Text>Удал.</Text>
-        </TouchableOpacity>
-      </View>
+      {isCompleted ? null : (
+        <View style={styles.iconsContainer}>
+          <View style={styles.icon}>
+            <TouchableOpacity onPress={() => setIsEditable(!isEditable)}>
+              <Icon name="pencil" size={25} color="#000000" />
+            </TouchableOpacity>
+          </View>
+          <View style={styles.icon}>
+            <TouchableOpacity
+              onPress={() => onDeleteTodo({id})}
+              style={styles.icon}>
+              <Icon name="trash" size={25} color="#000000" />
+            </TouchableOpacity>
+          </View>
+        </View>
+      )}
     </View>
   );
 };

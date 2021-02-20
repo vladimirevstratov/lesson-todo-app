@@ -10,11 +10,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 40,
+    paddingTop: 2,
     backgroundColor: '#3F4EA0',
-  },
-  text: {
-    color: '#ffffff',
-    fontSize: 35,
   },
 });
 

@@ -20,6 +20,12 @@ const styles = StyleSheet.create({
   completedNameText: {
     color: '#B9B9BE',
   },
+  iconsContainer: {
+    flexDirection: 'row',
+  },
+  icon: {
+    marginHorizontal: 3,
+  },
   categoryText: {
     color: '#58595B',
   },
