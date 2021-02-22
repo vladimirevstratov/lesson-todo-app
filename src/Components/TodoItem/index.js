@@ -3,6 +3,7 @@ import {View, Text, TextInput, TouchableOpacity, Picker} from 'react-native';
 import styles from './styles';
 import CheckBox from '@react-native-community/checkbox';
 import {todoProps} from '../../Constants/todo';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const TodoItem = ({
   id,
@@ -11,6 +12,7 @@ const TodoItem = ({
   onChangeTodo,
   isCompleted,
   todoCategories,
+  onDeleteTodo,
 }) => {
   const [toggleCheckBox, setToggleCheckBox] = useState(isCompleted);
   const [isEditable, setIsEditable] = useState(false);
@@ -43,9 +45,15 @@ const TodoItem = ({
               style={styles.nameText}
             />
           ) : (
-            <Text style={styles.nameText}>{name}</Text>
+            <Text
+              style={[
+                styles.nameText,
+                isCompleted ? styles.completedNameText : null,
+              ]}>
+              {name}
+            </Text>
           )}
-          {isEditable ? (
+          {isCompleted ? null : isEditable ? (
             <Picker
               selectedValue={category}
               onValueChange={(value) => onChange(todoProps.category, value)}>
@@ -56,11 +64,22 @@ const TodoItem = ({
           )}
         </View>
       </View>
-      <View>
-        <TouchableOpacity onPress={() => setIsEditable(!isEditable)}>
-          <Text>Ред.</Text>
-        </TouchableOpacity>
-      </View>
+      {isCompleted ? null : (
+        <View style={styles.iconsContainer}>
+          <View style={styles.icon}>
+            <TouchableOpacity onPress={() => setIsEditable(!isEditable)}>
+              <Icon name="pencil" size={25} color="#000000" />
+            </TouchableOpacity>
+          </View>
+          <View style={styles.icon}>
+            <TouchableOpacity
+              onPress={() => onDeleteTodo({id})}
+              style={styles.icon}>
+              <Icon name="trash" size={25} color="#000000" />
+            </TouchableOpacity>
+          </View>
+        </View>
+      )}
     </View>
   );
 };

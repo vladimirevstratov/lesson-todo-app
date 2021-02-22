@@ -17,6 +17,15 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginBottom: 5,
   },
+  completedNameText: {
+    color: '#B9B9BE',
+  },
+  iconsContainer: {
+    flexDirection: 'row',
+  },
+  icon: {
+    marginHorizontal: 3,
+  },
   categoryText: {
     color: '#58595B',
   },
